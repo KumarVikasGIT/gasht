@@ -52,7 +52,7 @@ class _TouristDetailScreenState extends State<TouristDetailScreen> {
             width: MediaQuery.of(context).size.width,
             child:  Stack(
               children: [
-                data.image == null ? Container() : Image(image:CachedNetworkImageProvider(data.image!),fit: BoxFit.cover,width: double.infinity,),
+                data.image == null ? Container() : Image(image:CachedNetworkImageProvider(data.image!),fit: BoxFit.fill,width: double.infinity,height: 300,),
                 Container(
                   alignment: Alignment.center,
                   child: Container(

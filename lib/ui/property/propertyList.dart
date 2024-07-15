@@ -522,7 +522,7 @@ class _PropertyList extends State<PropertyList> {
                                     child:
 
                                     FutureBuilder(future: _translationController
-                                        .getTransaltion("${propertyList[index].price} IQD / Night"),
+                                        .getTransaltion("${propertyList[index].price} IQD / ${tr('night')}"),
                                         builder: (context,snapshot){
                                           if(snapshot.hasData)
                                           {
@@ -640,6 +640,7 @@ class _PropertyList extends State<PropertyList> {
 
                                   FutureBuilder(future: _translationController.getTransaltion( propertyList[index].area.toString()),
                                       builder: (context,snapshot){
+                                        //print("bbb ${snapshot.data!}");
                                         if(snapshot.hasData)
                                         {
                                           return       Text(
@@ -733,7 +734,7 @@ class _PropertyList extends State<PropertyList> {
                                     child:
 
                                     FutureBuilder(future: _translationController.getTransaltion(
-                                      " Unit Code(${propertyList[index].id})",
+                                      "${tr('unit-code')}(${propertyList[index].id})",
                                     ),
                                         builder: (context,snapshot){
                                           if(snapshot.hasData)
@@ -759,7 +760,7 @@ class _PropertyList extends State<PropertyList> {
                                                 //  currentLanguage == Language.english ? 'Your Text Here' : translatedText.toString(),
 
 
-                                                  'Unit Code(${propertyList[index].id})',
+                                                  '${tr('unit-code')}(${propertyList[index].id})',
                                                 style: TextStyle(
                                                   color: const Color(0xFF303030),
                                                   fontSize: 13,
@@ -810,13 +811,13 @@ class _PropertyList extends State<PropertyList> {
                       );
                     },
                   ) : Center(
-                    child: Text("No Property Found!",style: TextStyle(
+                    child: Text("no-property",style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontFamily: GoogleFonts.harmattan().fontFamily,
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.75,
-                    ),),
+                    ),).tr(),
                   ),
                 );
 

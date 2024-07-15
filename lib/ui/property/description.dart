@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -211,7 +210,7 @@ class _Description extends State<Description> {
               ),
 
 
-              FutureBuilder(future: _translationController.getTransaltion(   'For ${widget.propertyList.tenentType}'),
+              FutureBuilder(future: lang == "en" ?  _translationController.getTransaltion('For ${widget.propertyList.tenentType}') : _translationController.getTransaltion('${widget.propertyList.tenentType}'),
                   builder: (context,snapshot){
                     if(snapshot.hasData)
                     {
@@ -231,7 +230,7 @@ class _Description extends State<Description> {
                     {
                       return
                         Text(
-                          'For ${widget.propertyList.tenentType}',
+                          lang == "en" ? 'For ${widget.propertyList.tenentType}' : '${widget.propertyList.tenentType}',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: const Color(0xFF262626),

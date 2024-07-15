@@ -309,7 +309,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
                 if (phoneNumbers.isNotEmpty) {
 
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('You cannot send phone number in text.'),backgroundColor: Colors.red));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('you-cannot-send').tr(),backgroundColor: Colors.red));
 
                   print('Phone Numbers found: $phoneNumbers');
                 }
@@ -344,7 +344,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   List<String> extractPhoneNumbers(String text) {
     // Regular expression to match a simple phone number pattern
-    RegExp regex = RegExp(r'\d{5,}');
+    //RegExp regex = RegExp(r'\d{5,}');
+    RegExp regex = RegExp(r'[\d٠١٢٣٤٥٦٧٨٩]{5,}');
     Iterable<Match> matches = regex.allMatches(text);
 
     // Extract and return phone numbers found in the text

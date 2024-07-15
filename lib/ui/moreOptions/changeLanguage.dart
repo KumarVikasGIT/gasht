@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 import 'package:restart_app/restart_app.dart';
-
+import 'dart:io';
 import '../../main.dart';
 import '../controllers/langaugeCotroller.dart';
 
@@ -52,6 +52,8 @@ selectedLanguage = _translationController.selectedTargetLanguage.bcpCode;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
+
   return Scaffold(
     appBar: AppBar(
       backgroundColor: AppColors.appColor,

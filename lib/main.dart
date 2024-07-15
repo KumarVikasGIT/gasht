@@ -33,6 +33,7 @@ import 'package:url_strategy/url_strategy.dart';
 late Size mq;
 late String uid;
 late String uName;
+String ? lang;
 
 
 
@@ -304,9 +305,10 @@ class _MyHomePageState extends State<MyHomePage> {
     String? userId = await PrefManager.getString("userId");
     String? name  = await PrefManager.getString("name");
 
-    String ? lang  = await PrefManager.getString("lang");
+     lang  = await PrefManager.getString("lang");
 
     print("device locaocle  ==== >>>${context.deviceLocale.toString()}");
+    print("device lang  ==== >>>${lang}");
 
 
     if (token != null && userId !=null) {

@@ -89,7 +89,7 @@ class City {
   factory City.fromJson(Map<String, dynamic> json){
     return City(
       id: json["id"],
-      name: json["name"],
+      name: json["name"].toString().toLowerCase(),
       stateId: json["state_id"],
       image: json["image"],
       properties: json["properties"] == null ? [] : List<Property>.from(json["properties"]!.map((x) => Property.fromJson(x))),
