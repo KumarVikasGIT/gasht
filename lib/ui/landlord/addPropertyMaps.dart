@@ -28,6 +28,7 @@ import '../dashboard/controllers/dashboardController.dart';
 import '../prefManager.dart';
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 
+import 'package:path/path.dart' as p;
 
 
 
@@ -106,7 +107,8 @@ class _AddPropertyMaps extends State<AddPropertyMaps> {
   final tententTypeList = [
     //"Only Boys", "Only Girls", "Co-Living","Family","Bachelors","Working Professionals"
     tr("for_singles"),
-    tr("for_families")
+    tr("for_families"),
+    tr("both-families-singles"),
   ];
 
   void _onMapCreated(GoogleMapController controller) {
@@ -434,7 +436,7 @@ final  PropertyTypeController _propertyTypeController = Get.put(PropertyTypeCont
                             visible: selectedImg,
                             child:  SizedBox(
                                 width: double.maxFinite,
-                                height: 150,
+                                //height: 150,
                                 child:   GridView.count(
                                   physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
@@ -442,7 +444,13 @@ final  PropertyTypeController _propertyTypeController = Get.put(PropertyTypeCont
                                   children: List.generate(
                                       files.length, (index) {
                                     //  Asset asset = images[index];
-                                    return Image.file(files[index]);
+                                    return Column(
+                                      children: [
+                                        Expanded(child: Image.file(files[index],height: 250,)),
+                                        const SizedBox(height: 5,),
+                                        Text(p.basename(files[index].path),style: TextStyle(fontSize: 10,color: Colors.black,fontFamily: GoogleFonts.lato().fontFamily),textAlign: TextAlign.center,)
+                                      ],
+                                    );
                                   }),
                                 )
 
@@ -1072,6 +1080,16 @@ final  PropertyTypeController _propertyTypeController = Get.put(PropertyTypeCont
                               ),
                               onPressed: ()  {
 
+                                for(var element in files){
+                                  final ext = p.extension(element.path).toLowerCase();
+                                  if(ext  != '.png' && ext  != '.jpeg' && ext  != '.jpg'){
+                                    ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                                        content:const Text('invalid-img').tr(),
+                                        backgroundColor: Colors.red));
+                                    return;
+                                  }
+                                }
+
                                 if(controllerCity.isEmpty)
                                   {
                                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(
@@ -1115,6 +1133,15 @@ final  PropertyTypeController _propertyTypeController = Get.put(PropertyTypeCont
                                     backgroundColor: Colors.red,));
                                   return;
 
+                                }
+                                if (!isNumeric(controllerPrice.text)) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('numeric_price').tr(),
+                                      backgroundColor: Colors.red,
+                                    ),
+                                  );
+                                  return;
                                 }
                                 if(controllerPhone.text.isEmpty)
                                 {
@@ -1489,5 +1516,11 @@ final  PropertyTypeController _propertyTypeController = Get.put(PropertyTypeCont
   return false;
   }
 
+  }
+  bool isNumeric(String? str) {
+    if (str == null) {
+      return false;
+    }
+    return double.tryParse(str) != null;
   }
 }

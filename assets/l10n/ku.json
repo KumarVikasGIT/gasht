@@ -200,7 +200,8 @@
   "property_price_is_required": "نرخی موڵک پێویستە",
 
 
-
+  "meters":"٢م",
+  "motel & Apartments": "موتێل و شۆقەی تایبەت",
 
 
   "app_title": "پشتیوانم",
@@ -269,7 +270,9 @@
   "service_fee_wallet":" نرخی خزمەتگوزاری پێشوەختە لە ڕێگەی ژمارە موبایل یان جزدانەوە دەدرێت",
 
   "password_Changed_Successfully":"پاسۆرد بە سەرکەوتوویی گۆڕدرا",
-  "listing": "ليست"
+  "listing": "ليست",
+  "numeric_price": "نرخ دەبێت بە ژمارە بێت"
+
 }
 
 

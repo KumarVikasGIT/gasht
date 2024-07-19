@@ -193,19 +193,10 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin{
             alignment: Alignment.topLeft,
             child: Row(
               children: [
-
-
-
-
-
                 IconButton(
                   onPressed: () async {
                     print(LocaleKeys.property_name); //String
-
-                    //x context.setLocale(const Locale("ar"));
-
                     String? token = await PrefManager.getString("token");
-
                     if (token != null) {
                       Navigator.push(
                         context,
@@ -454,7 +445,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin{
                           ),
                         ),
                         Text(
-                          cities[index].name!,
+                          cities[index].name!.toLowerCase(),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 17,
@@ -1486,7 +1477,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin{
 
                                   ),
                                 ],),
-                              )
+                              ),
                             ],
                           )
                       ),

@@ -33,6 +33,7 @@ import 'package:url_strategy/url_strategy.dart';
 late Size mq;
 late String uid;
 late String uName;
+String ? lang;
 
 
 
@@ -304,9 +305,10 @@ class _MyHomePageState extends State<MyHomePage> {
     String? userId = await PrefManager.getString("userId");
     String? name  = await PrefManager.getString("name");
 
-    String ? lang  = await PrefManager.getString("lang");
+     lang  = await PrefManager.getString("lang");
 
     print("device locaocle  ==== >>>${context.deviceLocale.toString()}");
+    print("device lang  ==== >>>${lang}");
 
 
     if (token != null && userId !=null) {
@@ -456,7 +458,7 @@ class SecondScreen extends StatelessWidget {
                           const ThirdScreen()
                           ));*/
 
-                        }, child: Text("کۆردی",style: TextStyle(color:Colors.white ,fontSize: 20,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.harmattan().fontFamily)),
+                        }, child: Text("كوردى",style: TextStyle(color:Colors.white ,fontSize: 20,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.harmattan().fontFamily)),
                         ) ,
                       ),
 
@@ -479,7 +481,7 @@ class SecondScreen extends StatelessWidget {
                           _translationController.changeTargetLanguage("ar");
                           setLanguage();
 
-                        }, child: Text("عربي",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.harmattan().fontFamily)),
+                        }, child: Text("کود",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.harmattan().fontFamily)),
                         ) ,
                       ),
 

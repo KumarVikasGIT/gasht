@@ -198,7 +198,7 @@
 
 
 
-
+    "meters":"m²",
 
 
 
@@ -270,7 +270,8 @@
     "service_fee_wallet":"Service fee is to be paid in advance through wallet",
 
     "Confirm_Password_is_required":"Confirm Password is required",
-    "listing": "Listing"
+    "listing": "Listing",
+    "numeric_price": "Price must be in Numeric Value"
 }
 
 

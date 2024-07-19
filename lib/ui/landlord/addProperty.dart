@@ -1,11 +1,12 @@
 
-
+import 'package:path/path.dart';
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gasht/ui/controllers/langaugeCotroller.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1003,13 +1004,13 @@ class _AddProperty extends State<AddProperty> {
                 )
                 ,
 
-                const SizedBox(height: 10,),
+                const SizedBox(height: 30,),
 
                 Visibility(
                   visible: selectedImg,
                   child:  SizedBox(
                       width: double.maxFinite,
-                      height: 250,
+                      //height: 250,
                       child:   GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
@@ -1017,13 +1018,19 @@ class _AddProperty extends State<AddProperty> {
                         children: List.generate(
                             files.length, (index) {
                           //  Asset asset = images[index];
-                          return Image.file(files[index]);
+                          return Column(
+                            children: [
+                              Expanded(child: Image.file(files[index],height: 250,)),
+                              const SizedBox(height: 5,),
+                              Text(basename(files[index].path),style: TextStyle(fontSize: 10,color: Colors.black,fontFamily: GoogleFonts.lato().fontFamily),textAlign: TextAlign.center,)
+                            ],
+                          );
                         }),
                       )
 
                   ),),
 
-                const SizedBox(height: 20,),
+                const SizedBox(height: 30,),
 
 
                 Container(
@@ -1038,6 +1045,7 @@ class _AddProperty extends State<AddProperty> {
                       ),
                     ),
                     onPressed: ()  {
+
 
 
 
@@ -1228,6 +1236,17 @@ class _AddProperty extends State<AddProperty> {
   }
 
   void nextPage(BuildContext context) {
+
+    for(var element in files){
+      final ext = extension(element.path).toLowerCase();
+      if(ext  != '.png' && ext  != '.jpeg' && ext  != '.jpg'){
+        ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+            content:const Text('invalid-img').tr(),
+            backgroundColor: Colors.red));
+        return;
+      }
+    }
+
     if (controllerPropertyName.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar( SnackBar(
           content:const Text('property_name_is_required').tr(),

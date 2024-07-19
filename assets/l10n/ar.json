@@ -253,7 +253,9 @@
     "both_Passwords_are_different":"كلتا كلمات المرور مختلفة",
     "password_Changed_Successfully":"تم تغيير الرقم السري بنجاح",
   "service_fee_wallet":" يتم دفع رسوم الخدمة مقدمًا من خلال المحفظة",
-  "listing": "قائمة"
+  "listing": "قائمة",
+  "numeric_price": "يجب أن يكون السعر بالقيمة الرقمية.",
+  "meters":"٢م"
 }
 
 

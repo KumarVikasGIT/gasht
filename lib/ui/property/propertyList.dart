@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:card_banner/card_banner.dart';
+import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
@@ -19,10 +18,7 @@ import 'package:logger/logger.dart';
 import '../../data_models/model_propertyList.dart';
 import '../../data_models/propertyObject.dart';
 import '../../util/colors.dart';
-import 'package:dio/dio.dart';
-
 import '../controllers/langaugeCotroller.dart';
-import '../moreOptions/dunn.dart';
 
 class PropertyList extends StatefulWidget {
 
@@ -66,7 +62,6 @@ class _PropertyList extends State<PropertyList> {
   ];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     propertyController.fetchProperties(widget.cityId, widget.startDate, widget.endDate, widget.propertyId);
   }
@@ -152,8 +147,6 @@ class _PropertyList extends State<PropertyList> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-
 
     return SafeArea(
       child: Scaffold(
@@ -499,8 +492,6 @@ class _PropertyList extends State<PropertyList> {
 
                             child: Column(children: [
 
-
-
                                discount.isNotEmpty ?   CardBanner(
 
                                     text: discount,
@@ -509,49 +500,103 @@ class _PropertyList extends State<PropertyList> {
 
                                     child: foodCard(propertyList[index].images![0]
                                         .toString()),
-
-                                  ) :
-                               Image.network(propertyList[index].images![0].toString(),height: 240,fit: BoxFit.fill,width: double.infinity,),
-
-                              //for price and heart
-                              Row(
-                                children: [
-
-                                  Container(
+                                          )
+                                        : Image.network(
+                                            propertyList[index].images !=
+                                                        null &&
+                                                    propertyList[index]
+                                                        .images!
+                                                        .isNotEmpty
+                                                ? propertyList[index]
+                                                    .images![0]
+                                                    .toString()
+                                                : "https://via.placeholder.com/240",
+                                            // Placeholder image URL
+                                            height: 240,
+                                            fit: BoxFit.fill,
+                                            width: double.infinity,
+                                          ),
+                                    //for price and heart
+                                    Row(
+                                      children: [
+                                        Container(
                                     margin: const EdgeInsets.only(left: 10,top: 5,right: 10),
                                     child:
 
                                     FutureBuilder(future: _translationController
-                                        .getTransaltion("${propertyList[index].price} IQD / Night"),
-                                        builder: (context,snapshot){
-                                          if(snapshot.hasData)
-                                          {
-                                            return       Text(
-                                              snapshot.data!,
-                                              style: TextStyle(
-                                                color: const Color(0xFF303030),
-                                                fontSize: 13,
-                                                fontFamily:GoogleFonts.harmattan().fontFamily,
-                                                fontWeight: FontWeight.w600,
-                                                height: 1.54,
-                                              ),
-                                            );
-                                          }
-                                          else
-                                          {
-                                            return
-                                              Text(
-                                                "${propertyList[index].price} IQD",
-                                                style: TextStyle(
-                                                  color: const Color(0xFF303030),
-                                                  fontSize: 13,
-                                                  fontFamily:GoogleFonts.harmattan().fontFamily,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.54,
-                                                ),
-                                              );
-                                          }
-                                        }),
+                                                  .getTransaltion(
+                                                      "${propertyList[index].price} / ${tr('night')}"),
+                                              builder: (context, snapshot) {
+                                                if (snapshot.hasData) {
+                                                  return Row(children: [
+                                                    Text(
+                                                      "IDQ",
+                                                      style: TextStyle(
+                                                        color: const Color(
+                                                            0xFF303030),
+                                                        fontSize: 13,
+                                                        fontFamily: GoogleFonts
+                                                                .harmattan()
+                                                            .fontFamily,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.54,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 4,
+                                                    ),
+                                                    Text(
+                                                      snapshot.data!,
+                                                      style: TextStyle(
+                                                        color: const Color(
+                                                            0xFF303030),
+                                                        fontSize: 13,
+                                                        fontFamily: GoogleFonts
+                                                                .harmattan()
+                                                            .fontFamily,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.54,
+                                                      ),
+                                                    ),
+                                                  ]);
+                                                } else {
+                                                  return Row(children: [
+                                                    Text(
+                                                      "IDQ",
+                                                      style: TextStyle(
+                                                        color: const Color(
+                                                            0xFF303030),
+                                                        fontSize: 13,
+                                                        fontFamily: GoogleFonts
+                                                                .harmattan()
+                                                            .fontFamily,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.54,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 4,
+                                                    ),
+                                                    Text(
+                                                      "${propertyList[index].price}",
+                                                      style: TextStyle(
+                                                        color: const Color(
+                                                            0xFF303030),
+                                                        fontSize: 13,
+                                                        fontFamily: GoogleFonts
+                                                                .harmattan()
+                                                            .fontFamily,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.54,
+                                                      ),
+                                                    ),
+                                                  ]);
+                                                }
+                                              }),
 
 
 
@@ -640,21 +685,36 @@ class _PropertyList extends State<PropertyList> {
 
                                   FutureBuilder(future: _translationController.getTransaltion( propertyList[index].area.toString()),
                                       builder: (context,snapshot){
-                                        if(snapshot.hasData)
-                                        {
-                                          return       Text(
-                                            snapshot.data!,
-                                            style: TextStyle(
-                                              color: const Color(0xFF303030),
-                                              fontSize: 13,
-                                              fontFamily:GoogleFonts.harmattan().fontFamily,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          );
-                                        }
-                                        else
-                                        {
-                                          return
+                                              //print("bbb ${snapshot.data!}");
+                                              if (snapshot.hasData) {
+                                                return Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text('meters').tr(),
+                                                      SizedBox(
+                                                        width: 4,
+                                                      ),
+                                                      Text(
+                                                        snapshot.data!,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          color: const Color(
+                                                              0xFF262626),
+                                                          fontSize: 15,
+                                                          fontFamily: GoogleFonts
+                                                                  .harmattan()
+                                                              .fontFamily,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          letterSpacing: 0.60,
+                                                        ),
+                                                      ),
+                                                    ]);
+                                              } else {
+                                                return
                                             Text(
                                               propertyList[index].area.toString(),
                                               style: TextStyle(
@@ -681,49 +741,65 @@ class _PropertyList extends State<PropertyList> {
                                   Container(
 
                                     margin: const EdgeInsets.only(left: 10,top: 5,right: 10),
-                                    child:
-
-
-                                    FutureBuilder(future: _translationController.getTransaltion(
-                                      "${propertyList[index].propertyName} (${propertyList[index].propertyType})",
-                                    ),
-                                        builder: (context,snapshot){
-                                          if(snapshot.hasData)
-                                          {
-                                            return        Text(
-                                              //  currentLanguage == Language.english ? 'Your Text Here' : translatedText.toString(),
-
-
-                                             snapshot.data!,
-                                              style: TextStyle(
-                                                color: const Color(0xFF303030),
-                                                fontSize: 13,
-                                                fontFamily:GoogleFonts.harmattan().fontFamily,
-                                                fontWeight: FontWeight.w600,
-
-                                              ),
-                                            );
-                                          }
-                                          else
-                                          {
-                                            return
-                                              Text(
-                                                //  currentLanguage == Language.english ? 'Your Text Here' : translatedText.toString(),
-
-
-                                                "${propertyList[index].propertyName} (${propertyList[index].propertyType})",
-
-                                                style: TextStyle(
-                                                  color: const Color(0xFF303030),
-                                                  fontSize: 13,
-                                                  fontFamily:GoogleFonts.harmattan().fontFamily,
-                                                  fontWeight: FontWeight.w500,
-
+                                          child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Image.asset(
+                                                  _getAssetPath(
+                                                      propertyList[index]
+                                                          .propertyType!),
+                                                  width: 25,
+                                                  height: 25,
                                                 ),
-                                              );
-                                          }
-                                        }),
+                                                SizedBox(
+                                                  width: 4,
+                                                ),
+                                                FutureBuilder(
+                                                    future:
+                                                        _translationController
+                                                            .getTransaltion(
+                                                      "${propertyList[index].propertyName}",
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      if (snapshot.hasData) {
+                                                        return Text(
+                                                          //  currentLanguage == Language.english ? 'Your Text Here' : translatedText.toString(),
 
+                                                          snapshot.data!,
+                                                    style: TextStyle(
+                                                      color: const Color(
+                                                          0xFF303030),
+                                                      fontSize: 13,
+                                                      fontFamily: GoogleFonts
+                                                          .harmattan()
+                                                          .fontFamily,
+                                                      fontWeight: FontWeight
+                                                          .w600,
+                                                    ),
+                                                  );
+                                                } else {
+                                                  return Text(
+                                                    //  currentLanguage == Language.english ? 'Your Text Here' : translatedText.toString(),
+
+                                                          "${propertyList[index].propertyName} (${propertyList[index].propertyType})",
+
+                                                          style: TextStyle(
+                                                      color: const Color(
+                                                          0xFF303030),
+                                                      fontSize: 13,
+                                                      fontFamily: GoogleFonts
+                                                          .harmattan()
+                                                          .fontFamily,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                    ),
+                                                  );
+                                                }
+                                              }),
+                                        ]
+                                    ),
 
                                       ),
 
@@ -733,11 +809,10 @@ class _PropertyList extends State<PropertyList> {
                                     child:
 
                                     FutureBuilder(future: _translationController.getTransaltion(
-                                      " Unit Code(${propertyList[index].id})",
-                                    ),
-                                        builder: (context,snapshot){
-                                          if(snapshot.hasData)
-                                          {
+                                                "${tr('unit-code')}(${propertyList[index].id})",
+                                              ),
+                                              builder: (context, snapshot) {
+                                                if (snapshot.hasData) {
                                             return        Text(
                                               //  currentLanguage == Language.english ? 'Your Text Here' : translatedText.toString(),
 
@@ -758,12 +833,12 @@ class _PropertyList extends State<PropertyList> {
                                               Text(
                                                 //  currentLanguage == Language.english ? 'Your Text Here' : translatedText.toString(),
 
-
-                                                  'Unit Code(${propertyList[index].id})',
-                                                style: TextStyle(
-                                                  color: const Color(0xFF303030),
-                                                  fontSize: 13,
-                                                  fontFamily:GoogleFonts.harmattan().fontFamily,
+                                                    '${tr('unit-code')}(${propertyList[index].id})',
+                                                    style: TextStyle(
+                                                      color: const Color(
+                                                          0xFF303030),
+                                                      fontSize: 13,
+                                                      fontFamily:GoogleFonts.harmattan().fontFamily,
                                                   fontWeight: FontWeight.w500,
 
                                                 ),
@@ -810,18 +885,20 @@ class _PropertyList extends State<PropertyList> {
                       );
                     },
                   ) : Center(
-                    child: Text("No Property Found!",style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: GoogleFonts.harmattan().fontFamily,
-                      fontWeight: FontWeight.w500,
+                        child: Text(
+                          "no-property",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontFamily: GoogleFonts.harmattan().fontFamily,
+                            fontWeight: FontWeight.w500,
                       letterSpacing: 0.75,
-                    ),),
-                  ),
-                );
-
-              }
-                if (propertyController.isLoading.isTrue) {
+                          ),
+                        ).tr(),
+                      ),
+              );
+            }
+            if (propertyController.isLoading.isTrue) {
                   return const Center(
                       child: CircularProgressIndicator(color:AppColors.appColor));
                 }
@@ -1390,8 +1467,23 @@ class _PropertyList extends State<PropertyList> {
 
 }
 
+String _getAssetPath(String id) {
+  switch (id) {
+    case "resort Houses":
+      return "assets/images/resort.png";
+    case "cravans & Kepr":
+      return "assets/images/vacations.png";
+    case "farm Houses":
+      return "assets/images/farmer.png";
+    case "Motel & Apartments":
+      return "assets/images/motel.png";
+    case "hotel":
+      return "assets/images/hotel.png";
 
-
+    default:
+      return "assets/images/resort.png";
+  }
+}
 
 class FilterBox extends StatefulWidget {
   final String label;

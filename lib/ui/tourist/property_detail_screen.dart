@@ -232,7 +232,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
                                       ),
                                       const SizedBox(height: 5,),
                                       Text(
-                                        "${tr(data.city!)}}",
+                                        "${tr(data.city!)}",
                                         style: TextStyle(
                                           color: Color(0xff262626),
                                           fontSize: 16,
