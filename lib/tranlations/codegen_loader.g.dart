@@ -103,31 +103,22 @@ class CodegenLoader extends AssetLoader{
 
     "dukan": "دوکان",
     "akre": "ئاکرێ",
-    "Akre": "ئاکرێ",
     "amedi": "ئامێدی",
-    "Amedi": "ئامێدی",
     "zakho": "زاخۆ",
-    "Zakho": "زاخۆ",
     "choman": "چۆمان",
     "dohuk": "دهۆ ک",
-    "Dohuk": "دهۆ ک",
     "halabja": "هەڵەبچە",
     "hawler": "هەولێر",
     "sulaimanyah": "سلێمانی",
-    "sulaymaniyah": "سلێمانی",
     "shaqlawa": " شەقڵاوە",
-    "Shaqlawa": " شەقڵاوە",
     "soran": "سوڕان",
-    "Soran": "سوڕان",
     "resort Houses": "خانۆی گەشتیاری",
     "farm Houses": "مەزرەعە",
     "cravans & Kepr": "کەپر و کەرەڤان",
-    "Motel & Apartments": "موتێل و شۆقەی تایبەت",
+    "motel & Apartments": "موتێل و شۆقەی تایبەت",
     "hotel": "هوتێل",
 
-    "sulaymaniah":"سلێمانی",
-    "Sulaymaniah":"سلێمانی",
-    "hotel & Apartments":"هۆتێل و شوقە",
+
 
 
 
@@ -292,7 +283,7 @@ class CodegenLoader extends AssetLoader{
     "apartment": "شوقە",
     "night": "شەو",
     "unit_code": "کۆدی یەکە",
-    "for_Singles_": "بۆ خێزان و سینگڵەکان",
+    "for_Singles_": "بۆ سینگڵەکان",
     "choose_language": "زمان هەڵبژێرە",
     "write_Review": "سەرنجەکانتان بنووسن",
     "describe_Your_Experience": "ئەزموونی خۆت باس بکە",
@@ -341,17 +332,8 @@ class CodegenLoader extends AssetLoader{
     "Review_submitted_successfully":"پێداچوونەوە بە سەرکەوتوویی پێشکەش کرا",
     "Profile_Updated_Successfully":"پڕۆفایل بە سەرکەوتوویی نوێکرایەوە",
     "listing": "ليست",
-    "discover-tranquility" : "جوانى و ئارامی لە شوێنە گەشتیاریەکان بیدۆزەرەوە.",
-    "both-families-singles" : "خێزان و سینگڵ",
-    "invalid-img" :"فۆرمات ی وێ ن ە نادروست ە. تکايە وێ ن ەيەکی JPEG ، JPGي ان PNG هەڵبژ ێ رە.",
-    "no-property" : "هیچ موڵکێک نەدۆزرایەوە",
-    "unit-code":"کود",
-    "meter":"م",
-    "you-cannot-send": "ناتوانيت ژمارەی تەلەفۆن بنێری",
-    "numeric_price": "نرخ بە ژمارەیی زیاد بکە",
+    "discover-tranquility" : "جوانى و ئارامی لە شوێنە گەشتیاریەکان بیدۆزەرەوە."
 
-
-    "meters":"٢م"
 
 
 
@@ -655,7 +637,7 @@ class CodegenLoader extends AssetLoader{
     "booking_ID ": "Booking ID ",
     "daily_quote": "Daily quote",
     "oK": "OK",
-    "dukan": "Dukan",
+    "dukan": "dukan",
     "akre": "Akre",
     "amedi": "Amedi",
     "zakho": "Zakho",
@@ -664,27 +646,15 @@ class CodegenLoader extends AssetLoader{
     "halabja": "Halabja",
     "hawler": "Hawler",
     "sulaimanyah": "Sulaimanyah",
-    "sulaymaniyah": "Sulaymaniyah",
     "shaqlawa": "Shaqlawa",
     "soran": "Soran",
-    "sulaymaniah": "Sulaymaniah",
-    "hotel & Apartments": "Hotel & Apartments",
     "resort Houses": "Resort Houses",
     "farm Houses": "Farm Houses",
     "cravans & Kepr": "Cravans & Kepr",
-    "Motel & Apartments": "Motel & Apartments",
+    "motel & Apartments": "Motel & Apartments",
     "hotel": "Hotel",
     "listing": "Listing",
-    "discover-tranquility" : "Discover tranquility and luxury at resorts.",
-    "both-families-singles" : "Both families & singles",
-    "invalid-img" : "Invalid image format. Please select a JPEG, JPG or PNG image.",
-    "no-property" : "No Property Found",
-    "unit-code":"Unit Code",
-    "meter":"Meter",
-    "you-cannot-send": "You cannot send phone number in text",
-    "numeric_price": "Add price in numeric",
-
-    "meters":"m²"
+    "discover-tranquility" : "Discover tranquility and luxury at resorts."
 
   }
 
@@ -704,7 +674,7 @@ class CodegenLoader extends AssetLoader{
     "discover_book_and_experience_daily_stays_effortlessly": "اكتشف واحجز واستمتع بتجربة الإقامات اليومية بسهولة",
     "travel_made_simple_moments_made_special_find_unique_stays_with_us": "أصبح السفر بسيطًا، واللحظات أصبحت مميزة ابحث عن إقامات فريدة معنا",
     "make_your_trip_unforgettable_Smooth_stays_and_great_memories!": "اجعل رحلتك لا تنسى إقامات هادئة وذكريات رائعة",
-    "experience_Kurdistans_charm_in_our_cozy_homes_!": "أستمتع بسحر كردستان في منازلنا المريحة",
+    "experience_Kurdistans_charm_in_our_cozy_homes_!": "!أستمتع بسحر كردستان في منازلنا المريحة",
     "filled_with_warm_hospitality_and_cultural_pride_Your_stay_promises_magic_and_true_beauty": "المليئة بكرم الضيافة والفخر الثقافي إقامتك تبشر بالسحر والجمال الحقيقي.",
     "feel_at_home_in_any_place": "تشعر وكأنك في منزلك في أي مكان",
     "we_got_a_cozy_place_waiting_for_you_no_matter_where_your_adventures_take_you": "لدينا مكان مريح في انتظارك، بغض النظر عن المكان الذي تأخذك إليه مغامراتك!",
@@ -888,31 +858,20 @@ class CodegenLoader extends AssetLoader{
 
     "dukan": "دوکان",
     "akre": " عقرة",
-    "Akre": " عقرة",
     "amedi": "عمادیة",
-    "Amedi": "عمادیة",
     "zakho": "زاخو",
-    "Zakho": "زاخو",
     "choman": "چومان",
     "dohuk": "دهوک",
-    "Dohuk": "دهوک",
     "halabja": "حلبجة",
     "hawler": "اربیل",
     "sulaimanyah": "سلیمانیة",
-    "sulaymaniyah": "سلیمانیة",
     "shaqlawa": "شقلاوة",
-    "Shaqlawa": "شقلاوة",
     "soran": "سوران",
-    "Soran": "سوران",
     "resort Houses": "بیوت سیاحیة",
     "farm Houses": "مزرعة",
     "cravans & Kepr": " کرفان و کەبر",
-    "Motel & Apartments": "موتیل و شقق خاصة",
+    "motel & Apartments": "موتیل و شقق خاصة",
     "hotel": "فندق",
-
-  "sulaymaniah":"سليمانية",
-  "Sulaymaniah":"سليمانية",
-  "hotel & Apartments":" فندق وشقق",
 
 
     "property_name_is_required": "اسم العقار مطلوب",
@@ -1000,16 +959,9 @@ class CodegenLoader extends AssetLoader{
     "Profile_Updated_Successfully":"تم تحديث الملف الشخصي بنجاح",
 
     "listing": "قائمة",
-    "discover-tranquility" : "اكتشف الهدوء والرفاهية في المنتجعات.",
-    "both-families-singles" : "للعائلات والعزاب",
-    "invalid-img" : "صيغة الصورة غير صالحة. يرجى اختيار صورة JPEG، JPG أو PNG.",
-    "no-property" : "لم يتم العثور على الممتلكات",
-    "unit-code":"کود",
-    "meter":"م",
-    "you-cannot-send": "ال يمكنك إرسال أرقام الهواتف",
-    "numeric_price": "نرخ بە ژمارەیی زیاد بکە",
+    "discover-tranquility" : "اكتشف الهدوء والرفاهية في المنتجعات."
 
-    "meters":"٢م"
+
   };
 
 

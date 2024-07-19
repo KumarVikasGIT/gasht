@@ -1,10 +1,11 @@
 import 'dart:developer';
 
-import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:gasht/data_models/model_propertyList.dart';
+import 'package:gasht/ui/moreOptions/dunn.dart';
+import 'package:gasht/ui/property/precheckout.dart';
 import 'package:gasht/util/colors.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,12 +16,20 @@ import '../../api/retrofit_interface.dart';
 import '../../data_models/model_login.dart';
 import '../../loadingScreen.dart';
 import '../../main.dart';
+import '../../util/dialogs.dart';
 import '../../util/exapndedPanel.dart';
 import '../authentication/signup.dart';
 import '../controllers/langaugeCotroller.dart';
+import '../messages/firebase/chatUserDataModel.dart';
 import '../messages/firebase/chat_screen.dart';
 import '../messages/firebase/firebase.dart';
+import '../moreOptions/faq.dart';
 import '../prefManager.dart';
+import 'dummydata.dart';
+import 'package:dio/dio.dart';
+
+import 'package:material_dialogs/material_dialogs.dart';
+import 'package:lottie/lottie.dart';
 
 
 class Description extends StatefulWidget {
@@ -157,22 +166,17 @@ class _Description extends State<Description> {
                   builder: (context,snapshot){
                     if(snapshot.hasData)
                     {
-                      return Row(children: [
-                        Text('meters').tr(),
-                        SizedBox(width: 4,),
-                        Text(
-                          snapshot.data!,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: const Color(0xFF262626),
-                            fontSize: 13,
-                            fontFamily: GoogleFonts.harmattan().fontFamily,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 0.60,
-                          ),
+                      return        Text(
+                        snapshot.data!,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: const Color(0xFF262626),
+                          fontSize: 13,
+                          fontFamily: GoogleFonts.harmattan().fontFamily,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 0.60,
                         ),
-
-                      ]);
+                      );
                     }
                     else
                     {
@@ -205,12 +209,9 @@ class _Description extends State<Description> {
               const SizedBox(
                 width: 10,
               ),
-              FutureBuilder(
-                  future: lang == "en"
-                      ? _translationController.getTransaltion(
-                          'For ${widget.propertyList.tenentType}')
-                      : _translationController
-                          .getTransaltion('${widget.propertyList.tenentType}'),
+
+
+              FutureBuilder(future: _translationController.getTransaltion(   'For ${widget.propertyList.tenentType}'),
                   builder: (context,snapshot){
                     if(snapshot.hasData)
                     {
@@ -230,10 +231,8 @@ class _Description extends State<Description> {
                     {
                       return
                         Text(
-                        lang == "en"
-                            ? 'For ${widget.propertyList.tenentType}'
-                            : '${widget.propertyList.tenentType}',
-                        textAlign: TextAlign.center,
+                          'For ${widget.propertyList.tenentType}',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             color: const Color(0xFF262626),
                             fontSize: 13,
